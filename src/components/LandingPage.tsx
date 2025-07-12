@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Typography, Box, Container, Button, Stack, Grid } from '@mui/joy';
+import { Typography, Box, Container, Button, Stack } from '@mui/joy';
 import { keyframes } from '@mui/system';
 import { THEME } from '../constants';
 
@@ -39,13 +39,14 @@ const LandingPage: React.FC = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'radial-gradient(circle at 30% 40%, rgba(255,255,255,0.1) 0%, transparent 60%)',
+          background:
+            'radial-gradient(circle at 30% 40%, rgba(255,255,255,0.1) 0%, transparent 60%)',
           pointerEvents: 'none',
         },
       }}
     >
       <Container
-        maxWidth="lg"
+        maxWidth='lg'
         sx={{
           height: '100vh',
           display: 'grid',
@@ -68,9 +69,9 @@ const LandingPage: React.FC = () => {
           }}
         >
           <Typography
-            component="h1"
-            level="h1"
-            fontSize="clamp(3rem, 5vw, 5rem)"
+            component='h1'
+            level='h1'
+            fontSize='clamp(3rem, 5vw, 5rem)'
             sx={{
               background: 'linear-gradient(45deg, #FFFFFF, #E3F2FD)',
               backgroundClip: 'text',
@@ -85,8 +86,8 @@ const LandingPage: React.FC = () => {
           </Typography>
 
           <Typography
-            level="h2"
-            fontSize="clamp(1.5rem, 2vw, 2rem)"
+            level='h2'
+            fontSize='clamp(1.5rem, 2vw, 2rem)'
             sx={{
               color: 'rgba(255, 255, 255, 0.9)',
               mb: 4,
@@ -98,8 +99,8 @@ const LandingPage: React.FC = () => {
 
           <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
             <Button
-              size="lg"
-              variant="solid"
+              size='lg'
+              variant='solid'
               sx={{
                 backgroundColor: 'white',
                 color: THEME.colors.primary.main,
@@ -134,7 +135,8 @@ const LandingPage: React.FC = () => {
           left: '5%',
           width: '20vw',
           height: '20vw',
-          background: 'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
+          background:
+            'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
           borderRadius: '50%',
           animation: `${fadeIn} 2s ${THEME.transitions.easing.easeOut}`,
         }}
@@ -146,7 +148,8 @@ const LandingPage: React.FC = () => {
           right: '10%',
           width: '15vw',
           height: '15vw',
-          background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)',
+          background:
+            'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)',
           borderRadius: '50%',
           animation: `${fadeIn} 2.5s ${THEME.transitions.easing.easeOut}`,
         }}

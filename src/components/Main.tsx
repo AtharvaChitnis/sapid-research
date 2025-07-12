@@ -20,32 +20,6 @@ import {
 import { NAVIGATION_ITEMS, THEME, TESTIMONIALS } from '../constants';
 import { TestimonialProps } from '../types';
 
-const fadeInUp = `
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-`;
-
-const slideIn = `
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-`;
-
 const ServiceCard = memo(
   ({
     title,

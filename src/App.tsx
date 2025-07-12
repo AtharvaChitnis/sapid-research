@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { extendTheme, ThemeProvider } from '@mui/joy/styles';
+import { ThemeProvider } from '@mui/joy/styles';
 import { CssBaseline } from '@mui/joy';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Main from './components/Main';

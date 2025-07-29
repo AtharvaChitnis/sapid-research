@@ -516,20 +516,28 @@ const Main: React.FC = () => {
                       Visit Us
                     </Typography>
                     <Typography level='body-md' sx={{ opacity: 0.9 }}>
-                      123 Research Avenue
-                      <br />
-                      Innovation District
-                      <br />
-                      Research City, 12345
+
+UAE
+Shams Business Center, Sharjah Media City Free Zone, Al Messaned, Sharjah, UAE 
+<br />
+India 
+		    C/603, Wisdom Park,
+                      Finolex Chowk, Pimpri, 
+                      Pune, Maharashtra, India-411018 
                     </Typography>
                   </Box>
                   <Divider sx={{ bgcolor: 'rgba(255, 255, 255, 0.2)' }} />
                   <Box>
                     <Typography level='h3' sx={{ mb: 2, color: 'white' }}>
                       Contact Info
+
+			+971 585341618
+			
+			+91 7391895245
+
                     </Typography>
                     <Typography level='body-md' sx={{ opacity: 0.9 }}>
-                      Email: contact@sapidresearch.com
+                      Email: info@sapidresearch.com
                       <br />
                       Phone: (123) 456-7890
                     </Typography>

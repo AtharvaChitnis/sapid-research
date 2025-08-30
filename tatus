@@ -1,0 +1,5 @@
+[33m2d1360c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m dry
+[33m560815f[m  Dry
+[33me1abc72[m Fix ESLint errors: Comment out unused variables setIsSubmitting, setSubmitSuccess, and validateForm in ContactUs component
+[33m60b577c[m Fix ESLint errors: Comment out unused variables handleSubmit and consentData in ContactUs component
+[33mdbcb690[m DRY AND BETTER

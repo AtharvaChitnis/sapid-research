@@ -14,7 +14,6 @@ import {
   FormControl,
   FormLabel,
   FormHelperText,
-  Alert,
 } from '@mui/joy';
 import { THEME } from '../constants';
 import GDPRForm, { GDPRFormRef } from './GDPRForm';
@@ -31,8 +30,6 @@ const ContactUs: React.FC = () => {
     message: '',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const handleBackToHome = () => {
     navigate('/');
@@ -84,15 +81,8 @@ const ContactUs: React.FC = () => {
       return;
     }
 
-    setIsSubmitting(true);
-
-    // Get consent data
-    const consentData = gdprFormRef.current?.getConsentData();
-
-    // Simulate form submission with consent data
+    // Simulate form submission
     setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
       setFormData({
         name: '',
         email: '',
@@ -101,11 +91,6 @@ const ContactUs: React.FC = () => {
         subject: '',
         message: '',
       });
-
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
     }, 2000);
   };
 
@@ -242,122 +227,122 @@ const ContactUs: React.FC = () => {
                     showMarketingConsent={true}
                     showAnalyticsConsent={true}
                   >
-                    <Grid container spacing={3}>
-                      <Grid xs={12} sm={6}>
-                        <FormControl error={!!errors.name}>
-                          <FormLabel>Full Name *</FormLabel>
-                          <Input
-                            value={formData.name}
-                            onChange={(e) =>
-                              handleInputChange('name', e.target.value)
-                            }
-                            placeholder='Enter your full name'
-                            size='lg'
-                          />
-                          {errors.name && (
-                            <FormHelperText>{errors.name}</FormHelperText>
-                          )}
-                        </FormControl>
-                      </Grid>
+                    <Box component='form' onSubmit={handleSubmit}>
+                      <Grid container spacing={3}>
+                        <Grid xs={12} sm={6}>
+                          <FormControl error={!!errors.name}>
+                            <FormLabel>Full Name *</FormLabel>
+                            <Input
+                              value={formData.name}
+                              onChange={(e) =>
+                                handleInputChange('name', e.target.value)
+                              }
+                              placeholder='Enter your full name'
+                              size='lg'
+                            />
+                            {errors.name && (
+                              <FormHelperText>{errors.name}</FormHelperText>
+                            )}
+                          </FormControl>
+                        </Grid>
 
-                      <Grid xs={12} sm={6}>
-                        <FormControl error={!!errors.email}>
-                          <FormLabel>Email Address *</FormLabel>
-                          <Input
-                            type='email'
-                            value={formData.email}
-                            onChange={(e) =>
-                              handleInputChange('email', e.target.value)
-                            }
-                            placeholder='Enter your email address'
-                            size='lg'
-                          />
-                          {errors.email && (
-                            <FormHelperText>{errors.email}</FormHelperText>
-                          )}
-                        </FormControl>
-                      </Grid>
+                        <Grid xs={12} sm={6}>
+                          <FormControl error={!!errors.email}>
+                            <FormLabel>Email Address *</FormLabel>
+                            <Input
+                              type='email'
+                              value={formData.email}
+                              onChange={(e) =>
+                                handleInputChange('email', e.target.value)
+                              }
+                              placeholder='Enter your email address'
+                              size='lg'
+                            />
+                            {errors.email && (
+                              <FormHelperText>{errors.email}</FormHelperText>
+                            )}
+                          </FormControl>
+                        </Grid>
 
-                      <Grid xs={12} sm={6}>
-                        <FormControl>
-                          <FormLabel>Company</FormLabel>
-                          <Input
-                            value={formData.company}
-                            onChange={(e) =>
-                              handleInputChange('company', e.target.value)
-                            }
-                            placeholder='Enter your company name'
-                            size='lg'
-                          />
-                        </FormControl>
-                      </Grid>
+                        <Grid xs={12} sm={6}>
+                          <FormControl>
+                            <FormLabel>Company</FormLabel>
+                            <Input
+                              value={formData.company}
+                              onChange={(e) =>
+                                handleInputChange('company', e.target.value)
+                              }
+                              placeholder='Enter your company name'
+                              size='lg'
+                            />
+                          </FormControl>
+                        </Grid>
 
-                      <Grid xs={12} sm={6}>
-                        <FormControl>
-                          <FormLabel>Phone Number</FormLabel>
-                          <Input
-                            value={formData.phone}
-                            onChange={(e) =>
-                              handleInputChange('phone', e.target.value)
-                            }
-                            placeholder='Enter your phone number'
-                            size='lg'
-                          />
-                        </FormControl>
-                      </Grid>
+                        <Grid xs={12} sm={6}>
+                          <FormControl>
+                            <FormLabel>Phone Number</FormLabel>
+                            <Input
+                              value={formData.phone}
+                              onChange={(e) =>
+                                handleInputChange('phone', e.target.value)
+                              }
+                              placeholder='Enter your phone number'
+                              size='lg'
+                            />
+                          </FormControl>
+                        </Grid>
 
-                      <Grid xs={12}>
-                        <FormControl error={!!errors.subject}>
-                          <FormLabel>Subject *</FormLabel>
-                          <Input
-                            value={formData.subject}
-                            onChange={(e) =>
-                              handleInputChange('subject', e.target.value)
-                            }
-                            placeholder='What is this regarding?'
-                            size='lg'
-                          />
-                          {errors.subject && (
-                            <FormHelperText>{errors.subject}</FormHelperText>
-                          )}
-                        </FormControl>
-                      </Grid>
+                        <Grid xs={12}>
+                          <FormControl error={!!errors.subject}>
+                            <FormLabel>Subject *</FormLabel>
+                            <Input
+                              value={formData.subject}
+                              onChange={(e) =>
+                                handleInputChange('subject', e.target.value)
+                              }
+                              placeholder='What is this regarding?'
+                              size='lg'
+                            />
+                            {errors.subject && (
+                              <FormHelperText>{errors.subject}</FormHelperText>
+                            )}
+                          </FormControl>
+                        </Grid>
 
-                      <Grid xs={12}>
-                        <FormControl error={!!errors.message}>
-                          <FormLabel>Message *</FormLabel>
-                          <Textarea
-                            value={formData.message}
-                            onChange={(e) =>
-                              handleInputChange('message', e.target.value)
-                            }
-                            placeholder='Tell us about your research needs...'
-                            minRows={4}
-                            size='lg'
-                          />
-                          {errors.message && (
-                            <FormHelperText>{errors.message}</FormHelperText>
-                          )}
-                        </FormControl>
-                      </Grid>
+                        <Grid xs={12}>
+                          <FormControl error={!!errors.message}>
+                            <FormLabel>Message *</FormLabel>
+                            <Textarea
+                              value={formData.message}
+                              onChange={(e) =>
+                                handleInputChange('message', e.target.value)
+                              }
+                              placeholder='Tell us about your research needs...'
+                              minRows={4}
+                              size='lg'
+                            />
+                            {errors.message && (
+                              <FormHelperText>{errors.message}</FormHelperText>
+                            )}
+                          </FormControl>
+                        </Grid>
 
-                      <Grid xs={12}>
-                        <Button
-                          type='submit'
-                          size='lg'
-                          // loading={isSubmitting}
-                          sx={{
-                            background: THEME.colors.primary.gradient,
-                            '&:hover': {
-                              background: `linear-gradient(135deg, ${THEME.colors.primary.dark} 0%, ${THEME.colors.primary.main} 100%)`,
-                            },
-                          }}
-                        >
-                          {/* {isSubmitting ? 'Sending...' : 'Send Message'} */}
-                          Send Message
-                        </Button>
+                        <Grid xs={12}>
+                          <Button
+                            type='submit'
+                            size='lg'
+                            sx={{
+                              background: THEME.colors.primary.gradient,
+                              '&:hover': {
+                                background: `linear-gradient(135deg, ${THEME.colors.primary.dark} 0%, ${THEME.colors.primary.main} 100%)`,
+                              },
+                            }}
+                          >
+                            Send Message
+                          </Button>
+                        </Grid>
                       </Grid>
-                    </Grid>
+                    </Box>
                   </GDPRForm>
                 </Stack>
               </CardContent>

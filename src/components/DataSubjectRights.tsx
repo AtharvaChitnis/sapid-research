@@ -205,18 +205,36 @@ const DataSubjectRights: React.FC = () => {
             </Typography>
           </Box>
 
-          <Alert severity='info' sx={{ mb: 3 }}>
+          <Box
+            sx={{
+              mb: 3,
+              p: 2,
+              borderRadius: 1,
+              bgcolor: 'primary.50',
+              border: '1px solid',
+              borderColor: 'primary.200',
+            }}
+          >
             <Typography level='body-sm'>
               Under GDPR, you have several rights regarding your personal data.
               This form allows you to exercise these rights. We will respond to
               your request within 30 days as required by law.
             </Typography>
-          </Alert>
+          </Box>
 
           {submitSuccess ? (
             <Card>
               <CardContent>
-                <Alert severity='success' sx={{ mb: 2 }}>
+                <Box
+                  sx={{
+                    mb: 2,
+                    p: 2,
+                    borderRadius: 1,
+                    bgcolor: 'success.50',
+                    border: '1px solid',
+                    borderColor: 'success.200',
+                  }}
+                >
                   <Typography level='h4' sx={{ mb: 1 }}>
                     Request Submitted Successfully
                   </Typography>
@@ -226,7 +244,7 @@ const DataSubjectRights: React.FC = () => {
                     required by GDPR. You will receive a confirmation email
                     shortly with further instructions.
                   </Typography>
-                </Alert>
+                </Box>
                 <Typography level='body-sm' sx={{ color: 'text.secondary' }}>
                   <strong>Reference Number:</strong> DSR-
                   {Date.now().toString().slice(-6)}

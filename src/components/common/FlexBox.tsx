@@ -5,7 +5,12 @@ interface FlexBoxProps extends BoxProps {
   children: React.ReactNode;
   direction?: 'row' | 'column';
   align?: 'center' | 'flex-start' | 'flex-end' | 'stretch';
-  justify?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around';
+  justify?:
+    | 'center'
+    | 'flex-start'
+    | 'flex-end'
+    | 'space-between'
+    | 'space-around';
   gap?: number;
   wrap?: boolean;
 }

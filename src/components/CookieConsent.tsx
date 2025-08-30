@@ -8,13 +8,10 @@ import {
   ModalClose,
   Stack,
   Switch,
-  FormControl,
   FormLabel,
   Divider,
-  Alert,
   Container,
 } from '@mui/joy';
-import { THEME } from '../constants';
 
 interface CookiePreferences {
   necessary: boolean;
@@ -269,7 +266,16 @@ const CookieConsent: React.FC = () => {
 
             <Divider />
 
-            <Alert severity='info' sx={{ mt: 2 }}>
+            <Box
+              sx={{
+                mt: 2,
+                p: 2,
+                borderRadius: 1,
+                bgcolor: 'primary.50',
+                border: '1px solid',
+                borderColor: 'primary.200',
+              }}
+            >
               <Typography level='body-sm'>
                 For more information about how we use cookies and your data,
                 please read our{' '}
@@ -281,7 +287,7 @@ const CookieConsent: React.FC = () => {
                 </a>
                 .
               </Typography>
-            </Alert>
+            </Box>
 
             <Stack
               direction='row'

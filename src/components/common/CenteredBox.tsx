@@ -16,10 +16,10 @@ export const CenteredBox: React.FC<CenteredBoxProps> = ({
 }) => {
   const centerStyles = {
     ...(horizontal && { textAlign: 'center' as const }),
-    ...(vertical && { 
+    ...(vertical && {
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
     }),
   };
 

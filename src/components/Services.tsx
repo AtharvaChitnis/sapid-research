@@ -7,6 +7,7 @@ import {
   CardContent,
   Stack,
   Chip,
+  Box,
 } from '@mui/joy';
 import { THEME } from '../constants';
 import { useNavigation } from '../hooks';
@@ -14,11 +15,12 @@ import {
   PageContainer, 
   CenteredBox, 
   GradientText, 
-  HoverCard 
+  HoverCard,
+  FlexBox
 } from './common';
 
 const Services: React.FC = () => {
-  const { navigateToHome } = useNavigation();
+  const { navigateToHome, navigateToContact, navigateToOpinions } = useNavigation();
 
   const services = [
     {
@@ -107,7 +109,7 @@ const Services: React.FC = () => {
           >
             Back to Home
           </Button>
-        </Box>
+        </CenteredBox>
 
         {/* Services Grid */}
         <Grid container spacing={4}>
@@ -189,41 +191,32 @@ const Services: React.FC = () => {
                     </Box>
                   </Stack>
                 </CardContent>
-              </Card>
+              </HoverCard>
             </Grid>
           ))}
         </Grid>
 
         {/* Call to Action */}
-        <Box sx={{ textAlign: 'center', mt: 8 }}>
-          <Card
+        <CenteredBox sx={{ mt: 8 }}>
+          <HoverCard
             variant='outlined'
+            hoverEffect={false}
             sx={{
-              borderRadius: THEME.borderRadius.lg,
-              boxShadow: THEME.shadows.sm,
               background: `linear-gradient(135deg, rgba(46, 125, 50, 0.05) 0%, rgba(27, 94, 32, 0.05) 100%)`,
             }}
           >
             <CardContent>
               <Stack spacing={3}>
-                <Typography
-                  level='h2'
-                  sx={{
-                    background: THEME.colors.primary.gradient,
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    color: 'transparent',
-                  }}
-                >
+                <GradientText level='h2'>
                   Ready to Get Started?
-                </Typography>
+                </GradientText>
                 <Typography
                   level='body-lg'
                   sx={{ color: THEME.colors.text.secondary }}
                 >
                   Let's discuss how our research services can help drive your business forward.
                 </Typography>
-                <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
+                <FlexBox justify="center" gap={2} wrap>
                   <Button
                     size='lg'
                     sx={{
@@ -232,14 +225,14 @@ const Services: React.FC = () => {
                         background: `linear-gradient(135deg, ${THEME.colors.primary.dark} 0%, ${THEME.colors.primary.main} 100%)`,
                       },
                     }}
-                    onClick={() => navigate('/contact')}
+                    onClick={navigateToContact}
                   >
                     Contact Us
                   </Button>
                   <Button
                     variant='outlined'
                     size='lg'
-                    onClick={() => navigate('/opinions')}
+                    onClick={navigateToOpinions}
                     sx={{
                       borderColor: THEME.colors.primary.main,
                       color: THEME.colors.primary.main,
@@ -251,13 +244,13 @@ const Services: React.FC = () => {
                   >
                     Share Your Opinion
                   </Button>
-                </Box>
+                </FlexBox>
               </Stack>
             </CardContent>
-          </Card>
-        </Box>
+          </HoverCard>
+        </CenteredBox>
       </Container>
-    </Box>
+    </PageContainer>
   );
 };
 

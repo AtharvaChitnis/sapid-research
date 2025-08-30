@@ -184,7 +184,16 @@ const GDPRForm: React.FC<GDPRFormProps> = ({
         </Box>
 
         {/* Privacy Policy Notice */}
-        <Alert severity='info' sx={{ mt: 2 }}>
+        <Box
+          sx={{
+            mt: 2,
+            p: 2,
+            borderRadius: 1,
+            bgcolor: 'primary.50',
+            border: '1px solid',
+            borderColor: 'primary.200',
+          }}
+        >
           <Typography level='body-sm'>
             By submitting this form, you acknowledge that you have read and
             understood our{' '}
@@ -204,7 +213,7 @@ const GDPRForm: React.FC<GDPRFormProps> = ({
             </Link>
             .
           </Typography>
-        </Alert>
+        </Box>
 
         {/* Data Subject Rights Information */}
         <Box

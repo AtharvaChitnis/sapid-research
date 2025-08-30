@@ -1,8 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Typography, Box, Container, Button, Stack } from '@mui/joy';
+import { Typography, Container, Button, Stack } from '@mui/joy';
 import { keyframes } from '@mui/system';
 import { THEME } from '../constants';
+import { useNavigation } from '../hooks';
+import { CenteredBox, FlexBox } from './common';
 
 const fadeIn = keyframes`
   from {
@@ -16,23 +17,27 @@ const fadeIn = keyframes`
 `;
 
 const LandingPage: React.FC = () => {
-  const navigate = useNavigate();
+  const { navigateToMain, navigateToAbout, navigateToContact } =
+    useNavigation();
 
   const handleExplore = () => {
     document.body.classList.add('page-exit');
     setTimeout(() => {
-      navigate('/main');
+      navigateToMain();
     }, THEME.transitions.duration.medium);
   };
 
   return (
-    <Box
-      sx={{
+    <div
+      style={{
         minHeight: '100vh',
         background: THEME.colors.primary.gradient,
         position: 'relative',
         overflow: 'hidden',
-        '&::before': {
+      }}
+    >
+      <div
+        style={{
           content: '""',
           position: 'absolute',
           top: 0,
@@ -42,9 +47,8 @@ const LandingPage: React.FC = () => {
           background:
             'radial-gradient(circle at 30% 40%, rgba(255,255,255,0.1) 0%, transparent 60%)',
           pointerEvents: 'none',
-        },
-      }}
-    >
+        }}
+      />
       <Container
         maxWidth='lg'
         sx={{
@@ -56,7 +60,7 @@ const LandingPage: React.FC = () => {
         }}
       >
         {/* Left third - Empty for balance */}
-        <Box />
+        <div />
 
         {/* Center third - Main content */}
         <Stack
@@ -97,14 +101,7 @@ const LandingPage: React.FC = () => {
             Innovative Market Research Solutions
           </Typography>
 
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: 2,
-              flexWrap: 'wrap',
-            }}
-          >
+          <FlexBox justify='center' gap={2} wrap>
             <Button
               size='lg'
               variant='solid'
@@ -144,7 +141,7 @@ const LandingPage: React.FC = () => {
                   borderColor: 'white',
                 },
               }}
-              onClick={() => navigate('/about')}
+              onClick={navigateToAbout}
             >
               About Us
             </Button>
@@ -165,20 +162,20 @@ const LandingPage: React.FC = () => {
                   borderColor: 'white',
                 },
               }}
-              onClick={() => navigate('/contact')}
+              onClick={navigateToContact}
             >
               Contact Us
             </Button>
-          </Box>
+          </FlexBox>
         </Stack>
 
         {/* Right third - Empty for balance */}
-        <Box />
+        <div />
       </Container>
 
       {/* Background decorative elements */}
-      <Box
-        sx={{
+      <div
+        style={{
           position: 'absolute',
           top: '10%',
           left: '5%',
@@ -190,8 +187,8 @@ const LandingPage: React.FC = () => {
           animation: `${fadeIn} 2s ${THEME.transitions.easing.easeOut}`,
         }}
       />
-      <Box
-        sx={{
+      <div
+        style={{
           position: 'absolute',
           bottom: '15%',
           right: '10%',
@@ -203,7 +200,7 @@ const LandingPage: React.FC = () => {
           animation: `${fadeIn} 2.5s ${THEME.transitions.easing.easeOut}`,
         }}
       />
-    </Box>
+    </div>
   );
 };
 

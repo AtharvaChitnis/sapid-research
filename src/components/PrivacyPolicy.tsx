@@ -46,14 +46,23 @@ const PrivacyPolicy: React.FC = () => {
             </Typography>
           </Box>
 
-          <Alert severity='info' sx={{ mb: 3 }}>
+          <Box
+            sx={{
+              mb: 3,
+              p: 2,
+              borderRadius: 1,
+              bgcolor: 'primary.50',
+              border: '1px solid',
+              borderColor: 'primary.200',
+            }}
+          >
             <Typography level='body-sm'>
               This Privacy Policy explains how SAPID Research ("we", "our", or
               "us") collects, uses, and protects your personal information in
               compliance with the General Data Protection Regulation (GDPR) and
               other applicable data protection laws.
             </Typography>
-          </Alert>
+          </Box>
 
           {/* Introduction */}
           <Card>

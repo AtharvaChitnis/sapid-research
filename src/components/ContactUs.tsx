@@ -31,39 +31,39 @@ const ContactUs: React.FC = () => {
     message: '',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
-  // const [isSubmitting, setIsSubmitting] = useState(false);
-  // const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const handleBackToHome = () => {
     navigate('/');
   };
 
-  // const validateForm = () => {
-  //   const newErrors: Record<string, string> = {};
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
 
-  //   if (!formData.name.trim()) {
-  //     newErrors.name = 'Name is required';
-  //   }
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    }
 
-  //   if (!formData.email.trim()) {
-  //     newErrors.email = 'Email is required';
-  //   } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-  //     newErrors.email = 'Please enter a valid email address';
-  //   }
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
 
-  //   if (!formData.subject.trim()) {
-  //     newErrors.subject = 'Subject is required';
-  //   }
+    if (!formData.subject.trim()) {
+      newErrors.subject = 'Subject is required';
+    }
 
-  //   if (!formData.message.trim()) {
-  //     newErrors.message = 'Message is required';
-  //   } else if (formData.message.length < 10) {
-  //     newErrors.message = 'Message must be at least 10 characters long';
-  //   }
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.length < 10) {
+      newErrors.message = 'Message must be at least 10 characters long';
+    }
 
-  //   setErrors(newErrors);
-  //   return Object.keys(newErrors).length === 0;
-  // };
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -72,42 +72,42 @@ const ContactUs: React.FC = () => {
     }
   };
 
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  //   if (!validateForm()) {
-  //     return;
-  //   }
+    if (!validateForm()) {
+      return;
+    }
 
-  //   // Check GDPR consent
-  //   if (!gdprFormRef.current?.isConsentValid()) {
-  //     return;
-  //   }
+    // Check GDPR consent
+    if (!gdprFormRef.current?.isConsentValid()) {
+      return;
+    }
 
-  //   setIsSubmitting(true);
+    setIsSubmitting(true);
 
-  //   // Get consent data
-  //   const consentData = gdprFormRef.current?.getConsentData();
+    // Get consent data
+    const consentData = gdprFormRef.current?.getConsentData();
 
-  //   // Simulate form submission with consent data
-  //   setTimeout(() => {
-  //     setIsSubmitting(false);
-  //     setSubmitSuccess(true);
-  //     setFormData({
-  //       name: '',
-  //       email: '',
-  //       company: '',
-  //       phone: '',
-  //       subject: '',
-  //       message: '',
-  //     });
+    // Simulate form submission with consent data
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        phone: '',
+        subject: '',
+        message: '',
+      });
 
-  //     // Reset success message after 5 seconds
-  //     setTimeout(() => {
-  //       setSubmitSuccess(false);
-  //     }, 5000);
-  //   }, 2000);
-  // };
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitSuccess(false);
+      }, 5000);
+    }, 2000);
+  };
 
   const contactInfo = [
     {

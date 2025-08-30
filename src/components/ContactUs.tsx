@@ -223,7 +223,7 @@ const ContactUs: React.FC = () => {
                     </Typography>
                   </Box>
 
-                                     {/* {submitSuccess && (
+                  {/* {submitSuccess && (
                      <Alert
                        color='success'
                        variant='soft'
@@ -342,20 +342,20 @@ const ContactUs: React.FC = () => {
                       </Grid>
 
                       <Grid xs={12}>
-                                                 <Button
-                           type='submit'
-                           size='lg'
-                           // loading={isSubmitting}
-                           sx={{
-                             background: THEME.colors.primary.gradient,
-                             '&:hover': {
-                               background: `linear-gradient(135deg, ${THEME.colors.primary.dark} 0%, ${THEME.colors.primary.main} 100%)`,
-                             },
-                           }}
-                         >
-                           {/* {isSubmitting ? 'Sending...' : 'Send Message'} */}
-                           Send Message
-                         </Button>
+                        <Button
+                          type='submit'
+                          size='lg'
+                          // loading={isSubmitting}
+                          sx={{
+                            background: THEME.colors.primary.gradient,
+                            '&:hover': {
+                              background: `linear-gradient(135deg, ${THEME.colors.primary.dark} 0%, ${THEME.colors.primary.main} 100%)`,
+                            },
+                          }}
+                        >
+                          {/* {isSubmitting ? 'Sending...' : 'Send Message'} */}
+                          Send Message
+                        </Button>
                       </Grid>
                     </Grid>
                   </GDPRForm>

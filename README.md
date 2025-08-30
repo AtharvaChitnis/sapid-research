@@ -9,6 +9,10 @@ A modern, responsive website for SAPID Research built with React, TypeScript, an
 - ⚡ Fast and optimized performance
 - ♿ Accessibility compliant
 - 🔒 Security-focused with CSP headers
+- 🛡️ **GDPR Compliant** - Full compliance with General Data Protection Regulation
+- 🍪 **Cookie Consent Management** - Granular cookie preferences
+- 📋 **Data Subject Rights** - Easy exercise of GDPR rights
+- 🔐 **Privacy Policy** - Comprehensive data protection information
 
 ## Tech Stack
 
@@ -70,7 +74,12 @@ src/
 ├── components/          # React components
 │   ├── ErrorBoundary.tsx
 │   ├── LandingPage.tsx
-│   └── Main.tsx
+│   ├── Main.tsx
+│   ├── CookieConsent.tsx      # GDPR cookie consent banner
+│   ├── PrivacyPolicy.tsx      # Comprehensive privacy policy
+│   ├── DataSubjectRights.tsx  # Data subject rights form
+│   ├── GDPRForm.tsx          # GDPR-compliant form wrapper
+│   └── Footer.tsx            # Footer with privacy links
 ├── constants/          # Theme and configuration constants
 ├── hooks/             # Custom React hooks
 ├── types/             # TypeScript type definitions
@@ -78,6 +87,45 @@ src/
 ├── index.tsx         # Application entry point
 └── theme.ts          # MUI Joy theme configuration
 ```
+
+## GDPR Compliance
+
+This website is fully compliant with the General Data Protection Regulation (GDPR). Key features include:
+
+### Cookie Management
+
+- Granular cookie consent with accept/reject/settings options
+- Four cookie categories: Necessary, Analytics, Marketing, Preferences
+- Easy consent withdrawal and preference changes
+- Local storage of consent preferences
+
+### Privacy Policy
+
+- Comprehensive privacy policy covering all GDPR requirements
+- Clear explanation of data processing legal basis
+- Detailed information about data retention and sharing
+- Contact information for privacy inquiries
+
+### Data Subject Rights
+
+- Dedicated form for exercising GDPR rights
+- Support for all rights: Access, Rectification, Erasure, Portability, etc.
+- 30-day response commitment
+- Identity verification options
+
+### Form Compliance
+
+- All forms include explicit consent checkboxes
+- Clear data processing notices
+- Links to privacy policy and rights information
+- Consent withdrawal instructions
+
+### Additional Features
+
+- Footer with privacy policy and data rights links
+- GDPR compliance notice
+- SEO-friendly privacy meta tags
+- Multiple contact methods for privacy inquiries
 
 ## Contributing
 

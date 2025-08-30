@@ -1,24 +1,24 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   Typography,
-  Box,
   Container,
   Button,
   Grid,
-  Card,
   CardContent,
   Stack,
   Chip,
 } from '@mui/joy';
 import { THEME } from '../constants';
+import { useNavigation } from '../hooks';
+import { 
+  PageContainer, 
+  CenteredBox, 
+  GradientText, 
+  HoverCard 
+} from './common';
 
 const Services: React.FC = () => {
-  const navigate = useNavigate();
-
-  const handleBackToHome = () => {
-    navigate('/');
-  };
+  const { navigateToHome } = useNavigation();
 
   const services = [
     {
@@ -68,31 +68,18 @@ const Services: React.FC = () => {
   const categories = ['All', 'Research', 'Analytics', 'Consulting', 'Reporting'];
 
   return (
-    <Box
-      sx={{
-        minHeight: '100vh',
-        background: THEME.colors.background.gradient,
-        py: THEME.spacing.section.vertical.lg,
-      }}
-    >
+    <PageContainer background="gradient">
       <Container maxWidth='lg'>
         {/* Header Section */}
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
-          <Typography
+        <CenteredBox sx={{ mb: 6 }}>
+          <GradientText
             component='h1'
             level='h1'
             fontSize='clamp(2.5rem, 4vw, 4rem)'
-            sx={{
-              background: THEME.colors.primary.gradient,
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              color: 'transparent',
-              mb: 2,
-              fontWeight: 'bold',
-            }}
+            sx={{ mb: 2, fontWeight: 'bold' }}
           >
             Our Services
-          </Typography>
+          </GradientText>
           <Typography
             level='h2'
             fontSize='clamp(1.2rem, 1.5vw, 1.5rem)'
@@ -108,7 +95,7 @@ const Services: React.FC = () => {
           <Button
             variant='outlined'
             size='lg'
-            onClick={handleBackToHome}
+            onClick={navigateToHome}
             sx={{
               borderColor: THEME.colors.primary.main,
               color: THEME.colors.primary.main,
@@ -126,39 +113,23 @@ const Services: React.FC = () => {
         <Grid container spacing={4}>
           {services.map((service, index) => (
             <Grid xs={12} md={6} lg={4} key={index}>
-              <Card
+              <HoverCard
                 variant='outlined'
-                sx={{
-                  height: '100%',
-                  borderRadius: THEME.borderRadius.lg,
-                  boxShadow: THEME.shadows.sm,
-                  transition: `all ${THEME.transitions.duration.medium}ms ${THEME.transitions.easing.easeInOut}`,
-                  '&:hover': {
-                    boxShadow: THEME.shadows.lg,
-                    transform: 'translateY(-8px)',
-                  },
-                }}
+                sx={{ height: '100%' }}
               >
                 <CardContent>
                   <Stack spacing={3}>
-                    <Box sx={{ textAlign: 'center' }}>
+                    <CenteredBox>
                       <Typography fontSize='3rem'>{service.icon}</Typography>
-                    </Box>
+                    </CenteredBox>
                     
                     <Box>
-                      <Typography
+                      <GradientText
                         level='h3'
-                        sx={{
-                          background: THEME.colors.primary.gradient,
-                          backgroundClip: 'text',
-                          WebkitBackgroundClip: 'text',
-                          color: 'transparent',
-                          mb: 1,
-                          fontWeight: 'bold',
-                        }}
+                        sx={{ mb: 1, fontWeight: 'bold' }}
                       >
                         {service.title}
-                      </Typography>
+                      </GradientText>
                       <Chip
                         size='sm'
                         variant='soft'

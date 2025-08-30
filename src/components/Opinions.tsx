@@ -15,19 +15,22 @@ import {
   FormLabel,
   FormHelperText,
   Alert,
+  Select,
+  Option,
 } from '@mui/joy';
 import { THEME } from '../constants';
-import GDPRForm from './GDPRForm';
 
-const ContactUs: React.FC = () => {
+const Opinions: React.FC = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
-    phone: '',
-    subject: '',
-    message: '',
+    age: '',
+    occupation: '',
+    researchTopic: '',
+    opinion: '',
+    experience: '',
+    suggestions: '',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -50,14 +53,23 @@ const ContactUs: React.FC = () => {
       newErrors.email = 'Please enter a valid email address';
     }
 
-    if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required';
+    if (!formData.age) {
+      newErrors.age = 'Age group is required';
     }
 
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    } else if (formData.message.length < 10) {
-      newErrors.message = 'Message must be at least 10 characters long';
+    if (!formData.occupation.trim()) {
+      newErrors.occupation = 'Occupation is required';
+    }
+
+    if (!formData.researchTopic.trim()) {
+      newErrors.researchTopic = 'Research topic is required';
+    }
+
+    if (!formData.opinion.trim()) {
+      newErrors.opinion = 'Your opinion is required';
+    } else if (formData.opinion.length < 20) {
+      newErrors.opinion =
+        'Please provide a more detailed opinion (at least 20 characters)';
     }
 
     setErrors(newErrors);
@@ -87,10 +99,12 @@ const ContactUs: React.FC = () => {
       setFormData({
         name: '',
         email: '',
-        company: '',
-        phone: '',
-        subject: '',
-        message: '',
+        age: '',
+        occupation: '',
+        researchTopic: '',
+        opinion: '',
+        experience: '',
+        suggestions: '',
       });
 
       // Reset success message after 5 seconds
@@ -100,27 +114,44 @@ const ContactUs: React.FC = () => {
     }, 2000);
   };
 
-  const contactInfo = [
+  const researchTopics = [
+    'Consumer Behavior',
+    'Market Trends',
+    'Product Preferences',
+    'Brand Perception',
+    'Technology Adoption',
+    'Sustainability',
+    'Digital Marketing',
+    'E-commerce',
+    'Social Media',
+    'Other (please specify)',
+  ];
+
+  const ageGroups = ['18-24', '25-34', '35-44', '45-54', '55-64', '65+'];
+
+  const benefits = [
     {
-      icon: '📍',
-      title: 'Office Address',
-      content: '123 Research Drive\nInnovation District\nCity, State 12345',
+      icon: '🎯',
+      title: 'Shape Research',
+      description:
+        'Your opinions directly influence our research methodologies and focus areas.',
     },
     {
-      icon: '📧',
-      title: 'Email Us',
-      content: 'info@sapidresearch.com\nsupport@sapidresearch.com',
+      icon: '📊',
+      title: 'Data-Driven Insights',
+      description:
+        'Help create more accurate and relevant market research data.',
     },
     {
-      icon: '📞',
-      title: 'Call Us',
-      content: '+1 (555) 123-4567\n+1 (555) 987-6543',
+      icon: '🤝',
+      title: 'Community Impact',
+      description:
+        'Contribute to research that benefits businesses and consumers alike.',
     },
     {
-      icon: '🕒',
-      title: 'Business Hours',
-      content:
-        'Monday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 2:00 PM',
+      icon: '📈',
+      title: 'Stay Informed',
+      description: 'Get updates on research findings and market trends.',
     },
   ];
 
@@ -148,7 +179,7 @@ const ContactUs: React.FC = () => {
               fontWeight: 'bold',
             }}
           >
-            Contact Us
+            Share Your Opinion
           </Typography>
           <Typography
             level='h2'
@@ -160,8 +191,8 @@ const ContactUs: React.FC = () => {
               mx: 'auto',
             }}
           >
-            Get in touch with our research experts and let's discuss how we can
-            help your business grow
+            Contribute to our research and help shape the future of market
+            insights
           </Typography>
           <Button
             variant='outlined'
@@ -181,7 +212,69 @@ const ContactUs: React.FC = () => {
         </Box>
 
         <Grid container spacing={4}>
-          {/* Contact Form */}
+          {/* Benefits Section */}
+          <Grid xs={12} lg={4}>
+            <Stack spacing={3}>
+              <Typography
+                level='h3'
+                sx={{
+                  background: THEME.colors.primary.gradient,
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  color: 'transparent',
+                  mb: 2,
+                }}
+              >
+                Why Share Your Opinion?
+              </Typography>
+
+              {benefits.map((benefit, index) => (
+                <Card
+                  key={index}
+                  variant='outlined'
+                  sx={{
+                    borderRadius: THEME.borderRadius.lg,
+                    boxShadow: THEME.shadows.sm,
+                    transition: `all ${THEME.transitions.duration.medium}ms ${THEME.transitions.easing.easeInOut}`,
+                    '&:hover': {
+                      boxShadow: THEME.shadows.md,
+                      transform: 'translateY(-2px)',
+                    },
+                  }}
+                >
+                  <CardContent>
+                    <Stack spacing={2}>
+                      <Box
+                        sx={{ display: 'flex', alignItems: 'center', gap: 2 }}
+                      >
+                        <Typography fontSize='2rem'>{benefit.icon}</Typography>
+                        <Typography
+                          level='h4'
+                          sx={{
+                            color: THEME.colors.text.primary,
+                            fontWeight: 'bold',
+                          }}
+                        >
+                          {benefit.title}
+                        </Typography>
+                      </Box>
+                      <Typography
+                        level='body-md'
+                        sx={{
+                          color: THEME.colors.text.secondary,
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {benefit.description}
+                      </Typography>
+                    </Stack>
+                  </CardContent>
+                </Card>
+              ))}
+            </Stack>
+          </Grid>
+
+          {/* Opinion Form */}
           <Grid xs={12} lg={8}>
             <Card
               variant='outlined'
@@ -203,14 +296,15 @@ const ContactUs: React.FC = () => {
                         mb: 2,
                       }}
                     >
-                      Send us a Message
+                      Contribute to Research
                     </Typography>
                     <Typography
                       level='body-lg'
                       sx={{ color: THEME.colors.text.secondary }}
                     >
-                      Fill out the form below and we'll get back to you within
-                      24 hours.
+                      Your insights help us create more accurate and relevant
+                      market research. Share your thoughts and experiences
+                      below.
                     </Typography>
                   </Box>
 
@@ -222,17 +316,12 @@ const ContactUs: React.FC = () => {
                         borderRadius: THEME.borderRadius.md,
                       }}
                     >
-                      Thank you for your message! We'll get back to you soon.
+                      Thank you for sharing your opinion! Your contribution will
+                      help improve our research quality.
                     </Alert>
                   )}
 
-                  <GDPRForm
-                    onSubmit={handleSubmit}
-                    title='Send us a Message'
-                    description="Fill out the form below and we'll get back to you within 24 hours."
-                    showMarketingConsent={true}
-                    showAnalyticsConsent={true}
-                  >
+                  <Box component='form' onSubmit={handleSubmit}>
                     <Grid container spacing={3}>
                       <Grid xs={12} sm={6}>
                         <FormControl error={!!errors.name}>
@@ -270,65 +359,117 @@ const ContactUs: React.FC = () => {
                       </Grid>
 
                       <Grid xs={12} sm={6}>
-                        <FormControl>
-                          <FormLabel>Company</FormLabel>
-                          <Input
-                            value={formData.company}
-                            onChange={(e) =>
-                              handleInputChange('company', e.target.value)
+                        <FormControl error={!!errors.age}>
+                          <FormLabel>Age Group *</FormLabel>
+                          <Select
+                            value={formData.age}
+                            onChange={(_, value) =>
+                              handleInputChange('age', value || '')
                             }
-                            placeholder='Enter your company name'
+                            placeholder='Select your age group'
                             size='lg'
-                          />
+                          >
+                            {ageGroups.map((age) => (
+                              <Option key={age} value={age}>
+                                {age}
+                              </Option>
+                            ))}
+                          </Select>
+                          {errors.age && (
+                            <FormHelperText>{errors.age}</FormHelperText>
+                          )}
                         </FormControl>
                       </Grid>
 
                       <Grid xs={12} sm={6}>
-                        <FormControl>
-                          <FormLabel>Phone Number</FormLabel>
+                        <FormControl error={!!errors.occupation}>
+                          <FormLabel>Occupation *</FormLabel>
                           <Input
-                            value={formData.phone}
+                            value={formData.occupation}
                             onChange={(e) =>
-                              handleInputChange('phone', e.target.value)
+                              handleInputChange('occupation', e.target.value)
                             }
-                            placeholder='Enter your phone number'
+                            placeholder='Enter your occupation'
                             size='lg'
                           />
-                        </FormControl>
-                      </Grid>
-
-                      <Grid xs={12}>
-                        <FormControl error={!!errors.subject}>
-                          <FormLabel>Subject *</FormLabel>
-                          <Input
-                            value={formData.subject}
-                            onChange={(e) =>
-                              handleInputChange('subject', e.target.value)
-                            }
-                            placeholder='What is this regarding?'
-                            size='lg'
-                          />
-                          {errors.subject && (
-                            <FormHelperText>{errors.subject}</FormHelperText>
+                          {errors.occupation && (
+                            <FormHelperText>{errors.occupation}</FormHelperText>
                           )}
                         </FormControl>
                       </Grid>
 
                       <Grid xs={12}>
-                        <FormControl error={!!errors.message}>
-                          <FormLabel>Message *</FormLabel>
-                          <Textarea
-                            value={formData.message}
-                            onChange={(e) =>
-                              handleInputChange('message', e.target.value)
+                        <FormControl error={!!errors.researchTopic}>
+                          <FormLabel>Research Topic of Interest *</FormLabel>
+                          <Select
+                            value={formData.researchTopic}
+                            onChange={(_, value) =>
+                              handleInputChange('researchTopic', value || '')
                             }
-                            placeholder='Tell us about your research needs...'
+                            placeholder='Select a research topic'
+                            size='lg'
+                          >
+                            {researchTopics.map((topic) => (
+                              <Option key={topic} value={topic}>
+                                {topic}
+                              </Option>
+                            ))}
+                          </Select>
+                          {errors.researchTopic && (
+                            <FormHelperText>
+                              {errors.researchTopic}
+                            </FormHelperText>
+                          )}
+                        </FormControl>
+                      </Grid>
+
+                      <Grid xs={12}>
+                        <FormControl error={!!errors.opinion}>
+                          <FormLabel>Your Opinion *</FormLabel>
+                          <Textarea
+                            value={formData.opinion}
+                            onChange={(e) =>
+                              handleInputChange('opinion', e.target.value)
+                            }
+                            placeholder='Share your thoughts, experiences, or insights on the selected topic...'
                             minRows={4}
                             size='lg'
                           />
-                          {errors.message && (
-                            <FormHelperText>{errors.message}</FormHelperText>
+                          {errors.opinion && (
+                            <FormHelperText>{errors.opinion}</FormHelperText>
                           )}
+                        </FormControl>
+                      </Grid>
+
+                      <Grid xs={12}>
+                        <FormControl>
+                          <FormLabel>Relevant Experience (Optional)</FormLabel>
+                          <Textarea
+                            value={formData.experience}
+                            onChange={(e) =>
+                              handleInputChange('experience', e.target.value)
+                            }
+                            placeholder='Share any relevant experiences or background that might be helpful...'
+                            minRows={3}
+                            size='lg'
+                          />
+                        </FormControl>
+                      </Grid>
+
+                      <Grid xs={12}>
+                        <FormControl>
+                          <FormLabel>
+                            Suggestions for Future Research (Optional)
+                          </FormLabel>
+                          <Textarea
+                            value={formData.suggestions}
+                            onChange={(e) =>
+                              handleInputChange('suggestions', e.target.value)
+                            }
+                            placeholder='What topics or areas would you like to see researched in the future?'
+                            minRows={3}
+                            size='lg'
+                          />
                         </FormControl>
                       </Grid>
 
@@ -344,77 +485,14 @@ const ContactUs: React.FC = () => {
                             },
                           }}
                         >
-                          {isSubmitting ? 'Sending...' : 'Send Message'}
+                          {isSubmitting ? 'Submitting...' : 'Submit Opinion'}
                         </Button>
                       </Grid>
                     </Grid>
-                  </GDPRForm>
+                  </Box>
                 </Stack>
               </CardContent>
             </Card>
-          </Grid>
-
-          {/* Contact Information */}
-          <Grid xs={12} lg={4}>
-            <Stack spacing={3}>
-              <Typography
-                level='h3'
-                sx={{
-                  background: THEME.colors.primary.gradient,
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  color: 'transparent',
-                  mb: 2,
-                }}
-              >
-                Get in Touch
-              </Typography>
-
-              {contactInfo.map((info, index) => (
-                <Card
-                  key={index}
-                  variant='outlined'
-                  sx={{
-                    borderRadius: THEME.borderRadius.lg,
-                    boxShadow: THEME.shadows.sm,
-                    transition: `all ${THEME.transitions.duration.medium}ms ${THEME.transitions.easing.easeInOut}`,
-                    '&:hover': {
-                      boxShadow: THEME.shadows.md,
-                      transform: 'translateY(-2px)',
-                    },
-                  }}
-                >
-                  <CardContent>
-                    <Stack spacing={2}>
-                      <Box
-                        sx={{ display: 'flex', alignItems: 'center', gap: 2 }}
-                      >
-                        <Typography fontSize='2rem'>{info.icon}</Typography>
-                        <Typography
-                          level='h4'
-                          sx={{
-                            color: THEME.colors.text.primary,
-                            fontWeight: 'bold',
-                          }}
-                        >
-                          {info.title}
-                        </Typography>
-                      </Box>
-                      <Typography
-                        level='body-md'
-                        sx={{
-                          color: THEME.colors.text.secondary,
-                          whiteSpace: 'pre-line',
-                          lineHeight: 1.6,
-                        }}
-                      >
-                        {info.content}
-                      </Typography>
-                    </Stack>
-                  </CardContent>
-                </Card>
-              ))}
-            </Stack>
           </Grid>
         </Grid>
 
@@ -439,19 +517,19 @@ const ContactUs: React.FC = () => {
                     color: 'transparent',
                   }}
                 >
-                  Ready to Start Your Research Project?
+                  Your Voice Matters
                 </Typography>
                 <Typography
                   level='body-lg'
                   sx={{ color: THEME.colors.text.secondary }}
                 >
-                  Schedule a consultation with our research experts to discuss
-                  your specific needs and objectives.
+                  Every opinion contributes to better research outcomes. Thank
+                  you for helping us understand the market better.
                 </Typography>
                 <Button
                   size='lg'
                   variant='outlined'
-                  onClick={() => navigate('/opinions')}
+                  onClick={() => navigate('/contact')}
                   sx={{
                     borderColor: THEME.colors.primary.main,
                     color: THEME.colors.primary.main,
@@ -461,7 +539,7 @@ const ContactUs: React.FC = () => {
                     },
                   }}
                 >
-                  Share Your Opinion
+                  Contact Us for More Info
                 </Button>
               </Stack>
             </CardContent>
@@ -472,4 +550,4 @@ const ContactUs: React.FC = () => {
   );
 };
 
-export default ContactUs;
+export default Opinions;

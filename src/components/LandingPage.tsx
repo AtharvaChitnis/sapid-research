@@ -97,7 +97,14 @@ const LandingPage: React.FC = () => {
             Innovative Market Research Solutions
           </Typography>
 
-          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 2,
+              flexWrap: 'wrap',
+            }}
+          >
             <Button
               size='lg'
               variant='solid'
@@ -119,6 +126,48 @@ const LandingPage: React.FC = () => {
               onClick={handleExplore}
             >
               Explore Our Services
+            </Button>
+            <Button
+              size='lg'
+              variant='outlined'
+              sx={{
+                borderColor: 'white',
+                color: 'white',
+                fontSize: 'lg',
+                px: 6,
+                py: 2,
+                borderRadius: THEME.borderRadius.lg,
+                transition: `all ${THEME.transitions.duration.medium}ms ${THEME.transitions.easing.easeInOut}`,
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  borderColor: 'white',
+                },
+              }}
+              onClick={() => navigate('/about')}
+            >
+              About Us
+            </Button>
+            <Button
+              size='lg'
+              variant='outlined'
+              sx={{
+                borderColor: 'white',
+                color: 'white',
+                fontSize: 'lg',
+                px: 6,
+                py: 2,
+                borderRadius: THEME.borderRadius.lg,
+                transition: `all ${THEME.transitions.duration.medium}ms ${THEME.transitions.easing.easeInOut}`,
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  borderColor: 'white',
+                },
+              }}
+              onClick={() => navigate('/contact')}
+            >
+              Contact Us
             </Button>
           </Box>
         </Stack>

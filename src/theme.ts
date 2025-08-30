@@ -43,6 +43,9 @@ const theme = extendTheme({
         root: {
           borderRadius: THEME.borderRadius.md,
           transition: `all ${THEME.transitions.duration.medium}ms ${THEME.transitions.easing.easeInOut}`,
+          '&:hover': {
+            transform: 'translateY(-2px)',
+          },
         },
       },
     },
@@ -51,6 +54,11 @@ const theme = extendTheme({
         root: {
           borderRadius: THEME.borderRadius.lg,
           transition: `all ${THEME.transitions.duration.medium}ms ${THEME.transitions.easing.easeInOut}`,
+          boxShadow: THEME.shadows.sm,
+          '&:hover': {
+            boxShadow: THEME.shadows.lg,
+            transform: 'translateY(-8px)',
+          },
         },
       },
     },
@@ -58,6 +66,37 @@ const theme = extendTheme({
       styleOverrides: {
         root: {
           borderRadius: THEME.borderRadius.md,
+        },
+      },
+    },
+    JoyTypography: {
+      styleOverrides: {
+        root: {
+          '&.gradient-text': {
+            background: THEME.colors.primary.gradient,
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            color: 'transparent',
+          },
+        },
+      },
+    },
+    JoyBox: {
+      styleOverrides: {
+        root: {
+          '&.centered': {
+            textAlign: 'center',
+          },
+          '&.flex-center': {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          },
+          '&.flex-between': {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          },
         },
       },
     },

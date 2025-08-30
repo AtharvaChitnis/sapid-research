@@ -1,8 +1,10 @@
 export const NAVIGATION_ITEMS = [
   { label: 'Home', path: '/', ariaLabel: 'Navigate to home page' },
-  { label: 'About', path: '#about', ariaLabel: 'Learn about us' },
-  { label: 'Services', path: '#services', ariaLabel: 'View our services' },
-  { label: 'Contact', path: '#contact', ariaLabel: 'Contact us' },
+  { label: 'About Us', path: '/about', ariaLabel: 'Learn about us' },
+  { label: 'Services', path: '/services', ariaLabel: 'View our services' },
+  { label: 'Blog', path: '/blog', ariaLabel: 'Read our blog' },
+  { label: 'Contact Us', path: '/contact', ariaLabel: 'Contact us' },
+  { label: 'Opinions', path: '/opinions', ariaLabel: 'Share your opinion' },
 ];
 
 export const TESTIMONIALS = [

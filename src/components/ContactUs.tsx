@@ -31,39 +31,39 @@ const ContactUs: React.FC = () => {
     message: '',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
+  // const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const handleBackToHome = () => {
     navigate('/');
   };
 
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
+  // const validateForm = () => {
+  //   const newErrors: Record<string, string> = {};
 
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
+  //   if (!formData.name.trim()) {
+  //     newErrors.name = 'Name is required';
+  //   }
 
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
-    }
+  //   if (!formData.email.trim()) {
+  //     newErrors.email = 'Email is required';
+  //   } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+  //     newErrors.email = 'Please enter a valid email address';
+  //   }
 
-    if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required';
-    }
+  //   if (!formData.subject.trim()) {
+  //     newErrors.subject = 'Subject is required';
+  //   }
 
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    } else if (formData.message.length < 10) {
-      newErrors.message = 'Message must be at least 10 characters long';
-    }
+  //   if (!formData.message.trim()) {
+  //     newErrors.message = 'Message is required';
+  //   } else if (formData.message.length < 10) {
+  //     newErrors.message = 'Message must be at least 10 characters long';
+  //   }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  //   setErrors(newErrors);
+  //   return Object.keys(newErrors).length === 0;
+  // };
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -223,17 +223,17 @@ const ContactUs: React.FC = () => {
                     </Typography>
                   </Box>
 
-                  {submitSuccess && (
-                    <Alert
-                      color='success'
-                      variant='soft'
-                      sx={{
-                        borderRadius: THEME.borderRadius.md,
-                      }}
-                    >
-                      Thank you for your message! We'll get back to you soon.
-                    </Alert>
-                  )}
+                                     {/* {submitSuccess && (
+                     <Alert
+                       color='success'
+                       variant='soft'
+                       sx={{
+                         borderRadius: THEME.borderRadius.md,
+                       }}
+                     >
+                       Thank you for your message! We'll get back to you soon.
+                     </Alert>
+                   )} */}
 
                   <GDPRForm
                     ref={gdprFormRef}
@@ -342,19 +342,20 @@ const ContactUs: React.FC = () => {
                       </Grid>
 
                       <Grid xs={12}>
-                        <Button
-                          type='submit'
-                          size='lg'
-                          loading={isSubmitting}
-                          sx={{
-                            background: THEME.colors.primary.gradient,
-                            '&:hover': {
-                              background: `linear-gradient(135deg, ${THEME.colors.primary.dark} 0%, ${THEME.colors.primary.main} 100%)`,
-                            },
-                          }}
-                        >
-                          {isSubmitting ? 'Sending...' : 'Send Message'}
-                        </Button>
+                                                 <Button
+                           type='submit'
+                           size='lg'
+                           // loading={isSubmitting}
+                           sx={{
+                             background: THEME.colors.primary.gradient,
+                             '&:hover': {
+                               background: `linear-gradient(135deg, ${THEME.colors.primary.dark} 0%, ${THEME.colors.primary.main} 100%)`,
+                             },
+                           }}
+                         >
+                           {/* {isSubmitting ? 'Sending...' : 'Send Message'} */}
+                           Send Message
+                         </Button>
                       </Grid>
                     </Grid>
                   </GDPRForm>

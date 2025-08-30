@@ -17,10 +17,8 @@ import {
   RadioGroup,
   Radio,
   Checkbox,
-  Alert,
   Divider,
 } from '@mui/joy';
-import { THEME } from '../constants';
 
 interface RightsRequest {
   requestType: string;

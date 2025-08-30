@@ -3,7 +3,7 @@ import { Typography, Container, Button, Stack } from '@mui/joy';
 import { keyframes } from '@mui/system';
 import { THEME } from '../constants';
 import { useNavigation } from '../hooks';
-import { CenteredBox, FlexBox } from './common';
+import { FlexBox } from './common';
 
 const fadeIn = keyframes`
   from {

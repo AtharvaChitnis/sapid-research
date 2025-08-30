@@ -67,7 +67,7 @@ const Services: React.FC = () => {
     }
   ];
 
-  const categories = ['All', 'Research', 'Analytics', 'Consulting', 'Reporting'];
+  // const categories = ['All', 'Research', 'Analytics', 'Consulting', 'Reporting'];
 
   return (
     <PageContainer background="gradient">

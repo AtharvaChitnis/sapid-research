@@ -103,14 +103,14 @@ const Blog: React.FC = () => {
     },
   ];
 
-  const categories = [
-    'All',
-    'Technology',
-    'Consumer Insights',
-    'Strategy',
-    'Analytics',
-    'Sustainability',
-  ];
+  // const categories = [
+  //   'All',
+  //   'Technology',
+  //   'Consumer Insights',
+  //   'Strategy',
+  //   'Analytics',
+  //   'Sustainability',
+  // ];
 
   return (
     <Box

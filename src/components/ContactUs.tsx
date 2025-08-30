@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Typography,
@@ -17,10 +17,11 @@ import {
   Alert,
 } from '@mui/joy';
 import { THEME } from '../constants';
-import GDPRForm from './GDPRForm';
+import GDPRForm, { GDPRFormRef } from './GDPRForm';
 
 const ContactUs: React.FC = () => {
   const navigate = useNavigate();
+  const gdprFormRef = useRef<GDPRFormRef>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -78,9 +79,17 @@ const ContactUs: React.FC = () => {
       return;
     }
 
+    // Check GDPR consent
+    if (!gdprFormRef.current?.isConsentValid()) {
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate form submission
+    // Get consent data
+    const consentData = gdprFormRef.current?.getConsentData();
+
+    // Simulate form submission with consent data
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
@@ -227,7 +236,7 @@ const ContactUs: React.FC = () => {
                   )}
 
                   <GDPRForm
-                    onSubmit={handleSubmit}
+                    ref={gdprFormRef}
                     title='Send us a Message'
                     description="Fill out the form below and we'll get back to you within 24 hours."
                     showMarketingConsent={true}

@@ -12,9 +12,7 @@ import {
   List,
   ListItem,
   ListItemContent,
-  Alert,
 } from '@mui/joy';
-import { THEME } from '../constants';
 
 const PrivacyPolicy: React.FC = () => {
   const navigate = useNavigate();

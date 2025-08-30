@@ -1,36 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef, useImperativeHandle } from 'react';
 import {
   Box,
-  Button,
   Typography,
   Stack,
   Checkbox,
   FormControl,
   FormLabel,
   FormHelperText,
-  Alert,
   Link,
 } from '@mui/joy';
 
 interface GDPRFormProps {
-  onSubmit: (data: any) => void;
   children: React.ReactNode;
   title?: string;
   description?: string;
   showMarketingConsent?: boolean;
   showAnalyticsConsent?: boolean;
   requiredFields?: string[];
+  onSubmit?: (data: any) => void;
 }
 
-const GDPRForm: React.FC<GDPRFormProps> = ({
-  onSubmit,
+export interface GDPRFormRef {
+  getConsentData: () => any;
+  isConsentValid: () => boolean;
+}
+
+const GDPRForm = forwardRef<GDPRFormRef, GDPRFormProps>(({
   children,
   title = 'Contact Form',
   description = "Please fill out the form below and we'll get back to you as soon as possible.",
   showMarketingConsent = true,
   showAnalyticsConsent = true,
   requiredFields = [],
-}) => {
+  onSubmit,
+}, ref) => {
   const [consents, setConsents] = useState({
     dataProcessing: false,
     marketing: false,
@@ -62,24 +65,28 @@ const GDPRForm: React.FC<GDPRFormProps> = ({
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleFormSubmit = (formData: any) => {
+  // Expose a function to validate consents and add consent data
+  const getConsentData = () => {
     if (!validateConsents()) {
-      return;
+      return null;
     }
 
-    // Add consent information to form data
-    const dataWithConsents = {
-      ...formData,
-      consents: {
-        dataProcessing: consents.dataProcessing,
-        marketing: consents.marketing,
-        analytics: consents.analytics,
-        timestamp: new Date().toISOString(),
-      },
+    return {
+      dataProcessing: consents.dataProcessing,
+      marketing: consents.marketing,
+      analytics: consents.analytics,
+      timestamp: new Date().toISOString(),
     };
-
-    onSubmit(dataWithConsents);
   };
+
+  // Expose the consent validation function
+  const isConsentValid = () => validateConsents();
+
+  // Expose functions via ref
+  useImperativeHandle(ref, () => ({
+    getConsentData,
+    isConsentValid,
+  }));
 
   return (
     <Box sx={{ maxWidth: 600, mx: 'auto' }}>
@@ -236,6 +243,6 @@ const GDPRForm: React.FC<GDPRFormProps> = ({
       </Stack>
     </Box>
   );
-};
+});
 
 export default GDPRForm;

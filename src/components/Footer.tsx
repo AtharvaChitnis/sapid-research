@@ -8,7 +8,7 @@ import {
   Link as JoyLink,
   Divider,
 } from '@mui/joy';
-import { THEME } from '../constants';
+// import { THEME } from '../constants';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();

@@ -72,42 +72,42 @@ const ContactUs: React.FC = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
+  //   if (!validateForm()) {
+  //     return;
+  //   }
 
-    // Check GDPR consent
-    if (!gdprFormRef.current?.isConsentValid()) {
-      return;
-    }
+  //   // Check GDPR consent
+  //   if (!gdprFormRef.current?.isConsentValid()) {
+  //     return;
+  //   }
 
-    setIsSubmitting(true);
+  //   setIsSubmitting(true);
 
-    // Get consent data
-    const consentData = gdprFormRef.current?.getConsentData();
+  //   // Get consent data
+  //   const consentData = gdprFormRef.current?.getConsentData();
 
-    // Simulate form submission with consent data
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        subject: '',
-        message: '',
-      });
+  //   // Simulate form submission with consent data
+  //   setTimeout(() => {
+  //     setIsSubmitting(false);
+  //     setSubmitSuccess(true);
+  //     setFormData({
+  //       name: '',
+  //       email: '',
+  //       company: '',
+  //       phone: '',
+  //       subject: '',
+  //       message: '',
+  //     });
 
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
-    }, 2000);
-  };
+  //     // Reset success message after 5 seconds
+  //     setTimeout(() => {
+  //       setSubmitSuccess(false);
+  //     }, 5000);
+  //   }, 2000);
+  // };
 
   const contactInfo = [
     {
